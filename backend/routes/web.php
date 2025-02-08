@@ -8,8 +8,8 @@ Route::get('/', function () {
 });
 
 Route::post('/login', function (Request $request) {
-    if (Auth::attempt($request->only('email', 'password'), )) {
-        return redirect()->route('filament.dashboard');
+    if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
+        return redirect()->route('filament.admin.pages.dashboard');
     }
 
     return back()->withErrors([

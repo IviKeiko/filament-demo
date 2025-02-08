@@ -110,6 +110,11 @@
         <div class="form-group">
             <input type="submit" value="LOGIN">
         </div>
+        <div class="form-group">
+            <label>
+                <input type="checkbox" name="remember"> Zapamti me
+            </label>
+        </div>
 
     </form>
 </div>
