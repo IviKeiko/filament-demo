@@ -11,9 +11,10 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\LocationResource\Pages\LocationsList;
+
 
 class LocationResource extends Resource
 {
@@ -69,7 +70,19 @@ class LocationResource extends Resource
                     ->searchable(),
             ])
             ->filters([
-                //
+                SelectFilter::make('city')
+                    ->options([
+                        'Banja Luka' => 'Banja Luka',
+                        'Novi Sad' => 'Novi Sad',
+                        'Beograd' => 'Beograd',
+                    ])
+                    ->label('Filter by City'),
+                SelectFilter::make('country')
+                    ->options([
+                        'BiH' => 'BiH',
+                        'Srbija' => 'Srbija',
+                    ])
+                    ->label('Filter by Country'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -95,6 +108,21 @@ class LocationResource extends Resource
             'index' => Pages\ListLocations::route('/'),
             'create' => Pages\CreateLocation::route('/create'),
             'edit' => Pages\EditLocation::route('/{record}/edit'),
+//            'list' => Pages\LocationsList::route('/list'),
         ];
+
+
     }
+
+//    public static function getNavigationItems(): array
+//    {
+//        return [
+//            'list' => [
+//                'label' => 'Locations List',
+//                'icon' => 'heroicon-o-map',
+//                'url' => static::getUrl('list'),
+//            ],
+////            ...parent::getNavigationItems(),  ...parent::getNavigationItems(),
+//        ];
+//    }
 }

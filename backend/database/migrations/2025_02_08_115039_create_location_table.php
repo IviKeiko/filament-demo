@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('city');
             $table->string('country');
             $table->string('restaurantName');
             $table->string('restaurantAddress');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('location');
+        Schema::dropIfExists('locations');
     }
 };

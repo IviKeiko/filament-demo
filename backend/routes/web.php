@@ -9,10 +9,12 @@ Route::get('/', function () {
 
 Route::post('/login', function (Request $request) {
     if (Auth::attempt($request->only('email', 'password'), )) {
-        return redirect()->route('filament.dashboard');
+        return redirect()->route('filament.admin.pages.dashboard');
     }
 
     return back()->withErrors([
         'email' => 'Pogrešna email adresa ili lozinka.',
     ]);
 })->name('filament.login');
+
+
