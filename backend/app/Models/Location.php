@@ -15,7 +15,9 @@ class Location extends Model
         'city',
         'country',
         'restaurantName',
-        'restaurantAddress'
+        'restaurantAddress',
+        'image_path',
+        'description'
     ];
 
     public static function create(array $array)

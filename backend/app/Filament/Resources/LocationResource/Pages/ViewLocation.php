@@ -9,4 +9,14 @@ use Filament\Resources\Pages\ViewRecord;
 class ViewLocation extends ViewRecord
 {
     protected static string $resource = LocationResource::class;
+
+    public function getView(): string
+    {
+        return 'filament.pages.view-location';
+    }
+    public function getTitle(): string
+    {
+        return ' ';
+    }
+
 }

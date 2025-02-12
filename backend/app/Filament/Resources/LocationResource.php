@@ -2,11 +2,16 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Pages\LocationListPage;
 use App\Filament\Resources\LocationResource\Pages;
 use App\Filament\Resources\LocationResource\RelationManagers;
 use App\Models\Location;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
@@ -41,6 +46,16 @@ class LocationResource extends Resource
                     ->label('Address')
                     ->required(),
 
+                FileUpload::make('image_path')
+                ->label('Restaurant Image')
+                    ->image()
+                    ->disk('public')
+                    ->directory('restaurant-images')
+                    ->required(),
+                Textarea::make('description')
+                    ->label('Description')
+                    ->maxLength(500)
+                    ->nullable(),
             ]);
     }
 
@@ -85,6 +100,7 @@ class LocationResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -92,6 +108,14 @@ class LocationResource extends Resource
                 ]),
             ]);
     }
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                TextEntry::make('city')
+            ]);
+    }
+
 
     public static function getRelations(): array
     {
@@ -107,8 +131,8 @@ class LocationResource extends Resource
             'create' => Pages\CreateLocation::route('/create'),
             'edit' => Pages\EditLocation::route('/{record}/edit'),
             'view' => Pages\ViewLocation::route('/{record}'),
-
-//            'location-list' => \App\Filament\Pages\LocationListPage::route('/location-list'),
+         //   'location-list' =>  \App\Filament\Pages\LocationListPage::url('/location-list'),
+          //'location-list' => LocationListPage::route('/location-list'),
         ];
 
 

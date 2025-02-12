@@ -11,15 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('locations', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('city_id')->constrained()->onDelete('cascade');
-//            $table->string('city');
-            $table->string('country');
-            $table->string('restaurantName');
-            $table->string('restaurantAddress');
+        Schema::table('locations', function (Blueprint $table) {
             $table->string('image_path')->nullable();
-            $table->timestamps();
         });
     }
 
@@ -28,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('locations');
+        Schema::table('locations', function (Blueprint $table) {
+            $table->dropColumn('image_path');
+        });
     }
 };
