@@ -11,6 +11,7 @@ class Location extends Model
 
     protected $table = 'locations';
     protected $fillable = [
+'city_id',
         'city',
         'country',
         'restaurantName',
@@ -20,4 +21,6 @@ class Location extends Model
     public static function create(array $array)
     {
     }
+
+
 }

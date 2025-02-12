@@ -5,7 +5,6 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\LocationResource\Pages;
 use App\Filament\Resources\LocationResource\RelationManagers;
 use App\Models\Location;
-use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,7 +12,6 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use App\Filament\Resources\LocationResource\Pages\LocationsList;
 
 
 class LocationResource extends Resource
@@ -108,21 +106,24 @@ class LocationResource extends Resource
             'index' => Pages\ListLocations::route('/'),
             'create' => Pages\CreateLocation::route('/create'),
             'edit' => Pages\EditLocation::route('/{record}/edit'),
-//            'list' => Pages\LocationsList::route('/list'),
+            'view' => Pages\ViewLocation::route('/{record}'),
+
+//            'location-list' => \App\Filament\Pages\LocationListPage::route('/location-list'),
         ];
 
 
     }
-
 //    public static function getNavigationItems(): array
 //    {
 //        return [
-//            'list' => [
-//                'label' => 'Locations List',
+//            'location-list' => [
+//                'label' => 'Location List',
 //                'icon' => 'heroicon-o-map',
-//                'url' => static::getUrl('list'),
+//                'url' => static::getUrl('location-list'),
 //            ],
-////            ...parent::getNavigationItems(),  ...parent::getNavigationItems(),
+//            ...parent::getNavigationItems(),
 //        ];
-//    }
+//   }
+
+
 }

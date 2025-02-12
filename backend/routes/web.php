@@ -16,5 +16,3 @@ Route::post('/login', function (Request $request) {
         'email' => 'Pogrešna email adresa ili lozinka.',
     ]);
 })->name('filament.login');
-
-
