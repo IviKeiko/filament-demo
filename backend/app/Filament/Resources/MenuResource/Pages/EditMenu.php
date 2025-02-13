@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\LocationResource\Pages;
+namespace App\Filament\Resources\MenuResource\Pages;
 
-use App\Filament\Resources\LocationResource;
+use App\Filament\Resources\MenuResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditLocation extends EditRecord
+class EditMenu extends EditRecord
 {
-    protected static string $resource = LocationResource::class;
+    protected static string $resource = MenuResource::class;
 
     protected function getHeaderActions(): array
     {
