@@ -11,7 +11,7 @@ class Location extends Model
 
     protected $table = 'locations';
     protected $fillable = [
-'city_id',
+        'city_id',
         'city',
         'country',
         'restaurantName',
