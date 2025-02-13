@@ -6,13 +6,7 @@ git clone git@github.com-IviKeiko:Ivikeiko/filament-demo.git
 ```
 
 ```bash
-cd filament-demo
-```
-
-install php dependencies
-
-```bash
-composer install
+cd filament-demo/backend
 ```
 
 create .env file
@@ -20,21 +14,27 @@ create .env file
 cp .env.example .env
 ```
 
-generate key
 ```bash
-php artisan key:generate
+  docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php84-composer:latest \
+    composer install --ignore-platform-reqs
 ```
 
-start migration
 ```bash
-php artisan migrate
+./vendor/bin/sail up -d
 ```
 
-run app
 ```bash
-php artisan serve
+./vendor/bin/sail artisan key:generate
+```
+```bash
+./vendor/bin/sail artisan migrate
 ```
 
-app: http://127.0.0.1:8000
-filament admin panel: http://127.0.0.1:8000/admin
+
+app: [http://127.0.0.1:8000](http://localhost/)
+filament admin panel: [http://127.0.0.1:8000/admin](http://localhost/admin/login)
 
