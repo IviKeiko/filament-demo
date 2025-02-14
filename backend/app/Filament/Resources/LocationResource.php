@@ -23,13 +23,15 @@ class LocationResource extends Resource
 {
     protected static ?string $model = Location::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-map';
     protected static ?string $navigationGroup = 'Restaurant Management';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
+//                TextInput::make('city_id')
+//                    ->label('City ID'),
                 TextInput::make('city')
                     ->label('City')
                     ->required()

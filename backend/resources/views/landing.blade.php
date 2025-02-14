@@ -48,14 +48,14 @@
 
                 <!-- Restaurant Details -->
                 <div class="p-6">
-                    <h2 class="text-xl font-semibold text-custom-primary">{{ $location->restaurantName }}</h2>
+                    <h2 class="text-xl font-extrabold text-custom-primary uppercase tracking-wider">{{ $location->restaurantName }}</h2>
                     <p class="text-gray-600 mt-2">{{ $location->restaurantAddress }}</p>
                     <p class="text-gray-600">{{ $location->city }}, {{ $location->country }}</p>
 
                     <!-- Description -->
                     @if ($location->description)
                         <div class="mt-4">
-                            <h3 class="text-lg font-medium text-custom-primary">Description</h3>
+                            <h3 class="text-lg font-normal text-custom-primary">Description</h3>
                             <p class="text-gray-600">{{ $location->description }}</p>
                         </div>
                     @endif
